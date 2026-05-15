@@ -30,26 +30,10 @@ out.println("Server Host Name :: "+inetAddress.getHostName());
 <%out.print( "Client IP Address  :: "+request.getRemoteAddr()); %><br>
 <%out.print( "Client Name Host :: "+request.getRemoteHost() );%><br></h1>
 <hr>
-<div style="text-align: center;">
-	<span>
-		<img src="images/mithunlogo.jpg" alt="" width="100">
-	</span>
-	<span style="font-weight: bold;">
-		Mithun Technologies, 
-		Marathahalli,
-		Bengaluru,
-		+91 9980923216 and 
-		Devopstrainingblr@Gmail.com
-		<br>
-		<a href="mailto:Devopstrainingblr@Gmail.com">Mail to Mithun Technologies</a>
-	</span>
-</div>
 <hr>
 	<p> Service : <a href="services/employee/getEmployeeDetails">Get Employee Details </p>
 <hr>
 <hr>
-<p align=center>Mithun Technologies - Consultant, Training and Development Center.</p>
-<p align=center><small>Copyrights 2025 by <a href="http://mithuntechnologies.com/">Mithun Technologies,Bengaluru</a> </small></p>
 
 </body>
 </html>
