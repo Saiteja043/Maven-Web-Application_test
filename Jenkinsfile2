@@ -1,0 +1,7 @@
+node{
+    stage('checkout code'){
+        git branch: 'dev', credentialsId: '42236ddd-abc2-4855-bdb7-b28ef614cc83', url: 'https://github.com/Saiteja043/Maven-Web-Application_test.git'
+    }
+    stage('build'){bat "mvn clean deploy sonar:sonar"}
+    
+}
