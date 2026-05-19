@@ -1,10 +1,15 @@
 pipeline{
+
+    agent any
     triggers {
         githubPush()
         
     }
 
-    agent any
+    options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')
+  timestamps()
+}
 stages {
     stage('Checkout-git') {
         steps {
@@ -57,12 +62,7 @@ Saiteja''', cc: 'rayalasaiteja1@gmail.com', from: 'rayalasaiteja1@gmail.com', re
             }
         
     }
-    options {
-  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')
-  timestamps()
-}
+
 
     
 }
-
-
