@@ -1,5 +1,8 @@
 pipeline{
 
+agent {
+  label 'Linux_node'
+}
     agent any
     triggers {
         githubPush()
