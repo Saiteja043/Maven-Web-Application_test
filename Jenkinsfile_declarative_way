@@ -22,20 +22,64 @@ stages {
     }
     stage('Maven Build') {
         steps {
-            bat "mvn clean package"
+                    script {
+
+            if (isUnix()) {
+
+                sh 'mvn clean package'
+
+            } else {
+
+                bat 'mvn clean package'
             
         }
         
     }
     stage('SonarQube Report') {
   steps {
-      bat "mvn clean sonar:sonar"
+      stage('SonarQube Report') {
+    steps {
+
+        script {
+
+            if (isUnix()) {
+
+                sh 'mvn clean sonar:sonar'
+
+            } else {
+
+                bat 'mvn clean sonar:sonar'
+
+            }
+
+        }
+
+    }
+}
   }
         
     }
     stage('Nexus Upload') {
         steps {
-            bat "mvn clean deploy"
+            stage('SonarQube Report') {
+    steps {
+
+        script {
+
+            if (isUnix()) {
+
+                sh 'mvn clean deploy'
+
+            } else {
+
+                bat 'mvn clean deploy'
+
+            }
+
+        }
+
+    }
+}
             
         }
         
@@ -69,7 +113,3 @@ Saiteja''', cc: 'rayalasaiteja1@gmail.com', from: 'rayalasaiteja1@gmail.com', re
 
     
 }
-
-
-
-
