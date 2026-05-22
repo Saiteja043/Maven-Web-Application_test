@@ -4,9 +4,6 @@ agent {
   label 'Linux_node'
 }
 
-tools {
-  git 'Git_linux'
-}
 triggers {
         githubPush()
         
