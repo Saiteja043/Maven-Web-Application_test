@@ -1,5 +1,9 @@
 pipeline{
 
+tools {
+  git 'Git_linux'
+}
+
 agent {
   label 'Linux_node'
 }
