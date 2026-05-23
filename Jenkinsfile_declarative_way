@@ -96,7 +96,7 @@ pipeline {
                         alternativeDeploymentContext: '',
                         credentialsId: '123e7593-a14f-432c-bd4f-5da94a1037c5',
                         path: '',
-                        url: 'http://98.130.98.202:8888/'
+                        url: 'http://16.112.176.119:8888/'
                     )
                 ],
                 contextPath: 'Jenkins_Deploy_Declarative_way',
