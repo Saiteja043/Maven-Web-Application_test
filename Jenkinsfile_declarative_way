@@ -1,0 +1,152 @@
+pipeline {
+agent any
+/*    agent {
+        label 'Linux_node'
+    }
+
+*/
+parameters {
+  choice choices: ['dev', 'master'], description: 'This is a build parameter used for both dev and master', name: 'BranchName'
+}
+
+
+
+    triggers {
+        githubPush()
+    }
+
+    options {
+        buildDiscarder logRotator(
+            artifactDaysToKeepStr: '',
+            artifactNumToKeepStr: '',
+            daysToKeepStr: '5',
+            numToKeepStr: '5'
+        )
+
+        timestamps()
+    }
+
+    stages {
+
+        stage('Checkout-git') {
+
+            steps {
+
+                git branch: 'dev',
+                    credentialsId: '42236ddd-abc2-4855-bdb7-b28ef614cc83',
+                    url: 'https://github.com/Saiteja043/Maven-Web-Application_test.git'
+
+            }
+
+        }
+
+        stage('Maven Build') {
+
+            steps {
+
+                script {
+
+                    if (isUnix()) {
+                        sh 'mvn clean package'
+                    } else {
+                        bat 'mvn clean package'
+                    }
+
+                }
+
+            }
+
+        }
+
+        stage('SonarQube Report') {
+
+            steps {
+
+                script {
+
+                    if (isUnix()) {
+                        sh 'mvn clean sonar:sonar'
+                    } else {
+                        bat 'mvn clean sonar:sonar'
+                    }
+
+                }
+
+            }
+
+        }
+
+        stage('Nexus Upload') {
+
+            steps {
+
+                script {
+
+                    if (isUnix()) {
+                        sh 'mvn clean deploy'
+                    } else {
+                        bat 'mvn clean deploy'
+                    }
+
+                }
+
+            }
+
+        }
+
+        stage('Deploy into Tomcat') {
+
+            steps {
+
+                deploy adapters: [
+                    tomcat9(
+                        alternativeDeploymentContext: '',
+                        credentialsId: '123e7593-a14f-432c-bd4f-5da94a1037c5',
+                        path: '',
+                        url: 'http://16.112.176.119:8888/'
+                    )
+                ],
+                contextPath: 'Jenkins_Deploy_Declarative_way',
+                war: '**/maven-web-application.war'
+
+            }
+
+        }
+
+    }
+
+    post {
+
+        success {
+
+            mail bcc: 'rayalasaiteja1@gmail.com',
+                 body: '''Testing the declarative way project build CI/CD both. If you are receiving this mail, that means the CI/CD executed successfully.
+
+Regards,
+Saiteja''',
+                 cc: 'rayalasaiteja1@gmail.com',
+                 from: 'rayalasaiteja1@gmail.com',
+                 replyTo: '',
+                 subject: 'Declarative_way_Project_Build_Test_SUCCESS',
+                 to: 'rayalasaiteja1@gmail.com'
+
+        }
+
+        failure {
+
+            mail bcc: 'rayalasaiteja1@gmail.com',
+                 body: '''Testing the declarative way project build CI/CD both. If you are receiving this mail, that means the CI/CD failed.
+
+Regards,
+Saiteja''',
+                 cc: 'rayalasaiteja1@gmail.com',
+                 from: 'rayalasaiteja1@gmail.com',
+                 replyTo: '',
+                 subject: 'Declarative_way_Project_Build_Test_FAILED',
+                 to: 'rayalasaiteja1@gmail.com'
+
+        }
+
+    }
+
+}
