@@ -1,8 +1,15 @@
 pipeline {
 
-    agent {
+/*    agent {
         label 'Linux_node'
     }
+
+*/
+parameters {
+  choice choices: ['dev', 'master'], description: 'This is a build parameter used for both dev and master', name: 'BranchName'
+}
+
+
 
     triggers {
         githubPush()
