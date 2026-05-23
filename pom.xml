@@ -21,11 +21,11 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://192.168.29.199:9000/</sonar.host.url>
+		<sonar.host.url>http://16.112.176.119:9000/</sonar.host.url>
 		<sonar.token>squ_af913edd7ce8c191b542214fda9d78df8effd42a</sonar.token>
 		<!--
 		<sonar.login>admin</sonar.login>
-		<sonar.password>sonarqube</sonar.password> 
+		<sonar.password>Eg0@sonarqube!#@</sonar.password> 
 		-->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -34,7 +34,7 @@
 	<repositories>
 			<repository>
 				<id>nexus</id>
-				<url>http://192.168.29.199:8081/repository/group-repo-saiteja/</url>
+				<url>http://16.112.176.119:8081/repository/group-repo-saiteja/</url>
 				<releases>
 					<enabled>true</enabled>
 				</releases>
@@ -117,13 +117,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Saiteja_Testing-release</name>
-	      <url>http://192.168.29.199:8081/repository/Saiteja_Testing-release/</url>
+	      <url>http://16.112.176.119:8081/repository/Saiteja_Testing-release/</url>
 	    </repository>
 		
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Saiteja_Testing-snapshot</name>
-	      <url>http://192.168.29.199:8081/repository/Saiteja_Testing-snapshot/</url>
+	      <url>http://16.112.176.119:8081/repository/Saiteja_Testing-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
