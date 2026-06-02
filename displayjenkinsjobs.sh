@@ -11,12 +11,13 @@ java -jar "/h/DevOps_Softwares/Installed_files/Jenkins_cli/jenkins-cli.jar" \
 echo "Please emter the job name from the list above"
 
 read jobName
-
+echo " Please select the Branch Name"
+read Name
 java -jar "/h/DevOps_Softwares/Installed_files/Jenkins_cli/jenkins-cli.jar" \
 -s http://192.168.29.199:8080/ \
--auth Jenkins:112e8f239773ea69dc480703b0ff1ba4ec build $jobName -p BranchName=master
+-auth Jenkins:112e8f239773ea69dc480703b0ff1ba4ec build $jobName -p BranchName=$Name
 
-echo "Building the $jobName Job" 
+echo "Building the $jobName Job in $Name branch" 
 
 echo " Done"
 
