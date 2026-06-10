@@ -14,7 +14,7 @@
 <h1 align="center">Installed Tomcat on AWS server successfully......</h1>
 <h1 align="center">This line will be shown if the deployment is failed in JaCoCo.</h1>
 <h1 align="center">This line will be shown if this is deployed from Jenkins node 1.</h1>
-<h1 align="center">Deployed from the Docker</h1>
+<h1 align="center">Deployed from the Docker.</h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
