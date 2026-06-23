@@ -15,6 +15,7 @@
 <h1 align="center">This line will be shown if the deployment is failed in JaCoCo.</h1>
 <h1 align="center">This line will be shown if this is deployed from Jenkins node 1.</h1>
 <h1 align="center">Deployed from the Docker.</h1>
+<h1 align="center">If you are seeing this line as the end line, then this app was deployed using docker compose with the build number.</h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
