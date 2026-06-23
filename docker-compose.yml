@@ -1,0 +1,20 @@
+services:
+  maven-web-app_compose:
+    container_name: maven-web-app_compose
+    image: saiteja043/maven-web-app:${VERSION}
+    networks:
+      - qanetwork
+	ports:
+	  - 6767:8080
+
+volumes:
+  composevolume:
+    name: composevolume
+    driver: local
+
+networks:
+  qanetwork:
+    name: qanetwork
+    driver: bridge
+
+
