@@ -4,7 +4,7 @@ services:
     image: saiteja043/maven-web-app:${VERSION}
     networks:
       - qanetwork
-	ports: 
+    ports:
       - 6767:8080
 
 volumes:
