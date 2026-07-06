@@ -1,29 +1,23 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: ReplicaSet
 metadata:
-  name: webpage-deployment
-  namespace: production
+  name: mavenreplicaset
+  namespace: dev
 spec:
   replicas: 2
-  revisionHistoryLimit: 5
   selector:
     matchLabels:
-      application: webpage
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-  minReadySeconds: 30
+      env: dev
   template:
     metadata:
-      name: webpage-pod
+      name: maven-pod
       labels:
-        application: webpage
+        env: dev
+        name: mavenpod
     spec:
       containers:
-      - name: webpage-container
-        image: 149536451818.dkr.ecr.ap-south-1.amazonaws.com/maven-web-application:Build_Tag
+      - name: maven-web-app
+        image: saiteja043/maven-web-application:${BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -31,12 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webpage-service
-  namespace: production
+  name: mavensvc
+  namespace: dev
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
-    application: webpage
-  ports:
+    env: dev
+  pors:
   - port: 80
     targetPort: 8080
