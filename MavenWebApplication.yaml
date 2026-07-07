@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: maven-web-app
-        image: saiteja043/maven-web-application:${BUILD_NUMBER}
+        image: saiteja043/maven-web-app:${BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
