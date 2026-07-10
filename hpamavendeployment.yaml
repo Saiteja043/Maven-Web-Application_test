@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: maven-web-app-pod
-        image: saiteja043/maven-web-app:{BUILD_NUMBER}
+        image: saiteja043/maven-web-app:${BUILD_NUMBER}
         resources:
           requests:
             memory: "256Mi"
