@@ -18,7 +18,7 @@ spec:
       - name: maven-web-app-pod
         image: saiteja043/maven-web-app:{BUILD_NUMBER}
         resources:
-          restrictions:
+          requests:
             memory: "256Mi"
             cpu: "250m"
           limits:
@@ -60,6 +60,8 @@ spec:
       target:
         type: Utilization
         averageUtilization: 40
+  - type: Resource
+    resource:
       name: memory
       target: 
         type: Utilization
