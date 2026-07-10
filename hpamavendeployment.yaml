@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: maven-deployment
-  env: dev
   namespace: dev
+  labels:
+    env: dev
 spec:
   selector:
     matchLabels:
