@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maven-deployment
+  env: dev
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: maven-web-app
+  template:
+    metadata:
+      labels:
+        app: maven-web-app
+    spec:
+      containers:
+      - name: maven-web-app-pod
+        image: saiteja043/maven-web-app:{BUILD_NUMBER}
+        resources:
+          restrictions:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mavensvc-hpa
+  namespace: dev
+spec:
+  selector:
+    app: maven-web-app
+  type: NodePort
+  nodeport: 30069
+  ports:
+  - port: 80
+    targetPort: 8080
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-mavendeployment
+  namespace: dev
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: maven-deployment
+  minReplicas: 2
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 40
+      name: memory
+      target: 
+        type: Utilization
+        averageUtilization: 40
+
+
+
