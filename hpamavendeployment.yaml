@@ -36,7 +36,6 @@ spec:
   selector:
     app: maven-web-app
   type: NodePort
-  nodeport: 30069
   ports:
   - port: 80
     targetPort: 8080
